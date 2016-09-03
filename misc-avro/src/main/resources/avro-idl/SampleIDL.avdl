@@ -1,0 +1,69 @@
+//
+// Plugin would collection only a single instead of the case class defs from avro4s before writing
+// To generate a .avsc file
+// java -jar avro-tools-1.9.0-SNAPSHOT.jar idl2schemata SampleIDL.avdl /tmp
+//
+/** Protocol docstring */
+@namespace("net.b83.misc")
+protocol SampleProtocol {
+    import schema "Struct2.avsc";
+    import schema "Enum.avsc";
+    import schema "../avro/LogicalTypes.avsc";
+    import idl "Include.avdl";
+
+    enum EnumFromIDL {
+        IdlA,
+        IdlB,
+        IdlC
+    }
+
+    fixed MyFixed(10);
+
+    // Plain old comment. Not a doc string
+    record Inner {
+        double @order("descending") x;
+        double @order("ignore") y;
+    }
+
+    @namespace("net.b83.misc.inner")
+    record Inner2 {
+        union { string, long, double} wtf;
+    }
+
+    /**
+     Doc string for record.
+     */
+    @aliases(["net.b83.misc.old.OldName"])
+    record IdlRecord {
+        /** name doc */
+        string name;
+        boolean valid = false;
+        bytes bites;
+        array<int> intArray;
+        map<SampleEnum> mapEnum;
+        union { null, string } optString = null;
+        union { string, long } either;
+
+        int @aliases(["id"]) betterNamedId;
+
+        MyFixed `fixed`; // Escaping keyword
+        EnumFromIDL idlEnum = "IdlA";
+
+        Inner inner = { "d": 1.5 };
+        net.b83.misc.inner.Inner2 inner2;
+
+        SampleEnum ee;
+        net.b83.misc2.Struct2 struct2;
+        FromIncluded anotherStruct;
+
+        // In 1.8.1
+        date `date`;
+        time_ms `time`;
+        timestamp_ms timestamp;
+        //decimal(4, 2) `decimal`; // After 1.8.1
+        //duration fixed(12) storing months, days, milliseconds
+        LogicalTypes logicals;
+    }
+
+
+}

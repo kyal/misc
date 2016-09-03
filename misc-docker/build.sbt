@@ -1,3 +1,3 @@
+enablePlugins(DockerPlugin)
 
-name := "misc-docker"
 description := "Docker examples"

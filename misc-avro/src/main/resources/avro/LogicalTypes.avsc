@@ -1,0 +1,37 @@
+{
+  "namespace": "net.b83.misc",
+  "type": "record",
+  "name": "LogicalTypes",
+  "fields": [
+    {
+      "name": "decimal",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 4,
+        "scale": 2
+      }
+    },
+    {
+      "name": "timeMicros",
+      "type": {
+        "type": "long",
+        "logicalType": "time-micros"
+      }
+    },
+    {
+      "name": "timestampMicros",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-micros"
+      }
+    },
+    {
+      "name": "uuid",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    }
+  ]
+}

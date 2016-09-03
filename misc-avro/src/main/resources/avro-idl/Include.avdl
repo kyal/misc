@@ -1,0 +1,7 @@
+@namespace("net.b83.misc")
+protocol Include {
+
+    record FromIncluded {
+
+    }
+}

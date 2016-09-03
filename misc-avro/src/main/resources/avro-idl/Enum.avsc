@@ -1,0 +1,11 @@
+{
+  "namespace": "net.b83.misc",
+  "type": "enum",
+  "name": "SampleEnum",
+  "doc": "Test enum in IDL",
+  "symbols": [
+    "EnumA",
+    "EnumB",
+    "EnumC"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "namespace": "net.b83.misc2",
+  "type": "record",
+  "name": "Struct2",
+  "fields": [
+    {
+      "name": "either",
+      "type": [
+        "string",
+        "long"
+      ]
+    }
+  ]
+}

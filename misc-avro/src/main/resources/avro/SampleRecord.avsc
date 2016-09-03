@@ -1,0 +1,72 @@
+{
+  "namespace": "net.b83.misc",
+  "type": "record",
+  "name": "universe",
+  "fields": [
+    {
+      "name": "sample",
+      "type": {
+        "namespace": "net.b83.misc",
+        "type": "record",
+        "name": "SampleRecord",
+        "doc": "Test record generation with avro4s",
+        "fields": [
+          {
+            "name": "i",
+            "type": "long",
+            "doc": "Long field"
+          },
+          {
+            "name": "s",
+            "type": "string",
+            "doc": "String field"
+          },
+          {
+            "name": "sampleEnum",
+            "type": {
+              "type": "enum",
+              "name": "SampleEnum",
+              "doc": "Test enum generation with avro4s",
+              "symbols": [
+                "EnumA",
+                "EnumB",
+                "EnumC"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "another",
+      "type": {
+        "namespace": "net.b83.misc2",
+        "type": "record",
+        "name": "AnotherSampleRecord",
+        "fields": [
+          {
+            "name": "opt",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "extEnum",
+            "type": "net.b83.misc.SampleEnum"
+          },
+          {
+            "name": "optEither",
+            "type": ["null", "net.b83.misc.SampleEnum", "string"]
+          },
+          {
+            "name": "coproduct",
+            "type": ["net.b83.misc.SampleEnum", "string", "long"]
+          }
+        ]
+      }
+    }
+  ]
+}
+
+
