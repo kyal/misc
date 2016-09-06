@@ -2,6 +2,7 @@
 // Plugin would collection only a single instead of the case class defs from avro4s before writing
 // To generate a .avsc file
 // java -jar avro-tools-1.9.0-SNAPSHOT.jar idl2schemata SampleIDL.avdl /tmp
+// From project dir: java -jar /home/src/avro/lang/java/tools/target/avro-tools-1.9.0-SNAPSHOT.jar idl2schemata ./misc-avro/src/main/resources/avro-idl/SampleIDL.avdl /tmp
 //
 /** Protocol docstring */
 @namespace("net.b83.misc")
@@ -66,4 +67,18 @@ protocol SampleProtocol {
     }
 
 
+    // A Message container
+    //  Which  is contains is encoded as a variable
+    //  length long. 63 message types can be encoded
+    //  in 1 union byte.
+    record EnvelopeOfAllTypes {
+        union {
+        EnumFromIDL,
+        MyFixed,
+        Inner,
+        net.b83.misc.inner.Inner2,
+        SampleEnum,
+        net.b83.misc2.Struct2
+        } message;
+    }
 }

@@ -42,3 +42,16 @@ buildInfoKeys ++= Seq[BuildInfoKey](
   libraryDependencies
 )   
 ```
+
+## Avro
+Why don't unions work? Avro should be looking up a class by name for each of them. Just force the return type
+to be Any and force the generated field type to be `T <: GenericRecord`. We can then do pattern matching.
+
+With scala annotation macros you could stub out a class / trait hierarchy and have the Avro fields filled in?
+```
+trait Base
+
+@FromSchema("Msg1.avsc")
+class Msg1 extends Base
+```
+But you still need the stub classes. Unless you macro annotate a package or parent object or something.

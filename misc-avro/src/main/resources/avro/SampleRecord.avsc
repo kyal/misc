@@ -22,6 +22,10 @@
             "doc": "String field"
           },
           {
+            "name": "fixed",
+            "type": {"type": "fixed", "size": 16, "name": "MyUUID" }
+          },
+          {
             "name": "sampleEnum",
             "type": {
               "type": "enum",
