@@ -7,10 +7,12 @@ lazy val `misc-docker` = project
   .dependsOn(
     `misc-avro`,
     ProjectRef(uri("git://github.com/kxbmap/configs"), "core")
-)
+  )
 
 scalaVersion in ThisBuild := "2.11.8"
 logLevel in (ThisBuild, avro2Class) := Level.Warn
+
+publishArtifact := false
 
 
 enablePlugins(BuildInfoPlugin)
