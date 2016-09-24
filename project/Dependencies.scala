@@ -16,7 +16,7 @@ object Dependencies {
     val `log4j-over-slf4j`  = "org.slf4j"                     %   "log4j-over-slf4j"      % "1.7.21"
     val avro4s              = "com.sksamuel.avro4s"           %%  "avro4s-core"           % "1.6.1"
     val `avro-tools`        = "org.apache.avro"               %   "avro-tools"            % "1.8.1"
-    val `akka-stream-kafka` = "com.typesafe.akka"             %% "akka-stream-kafka"      % "0.11"
+    val `akka-stream-kafka` = "com.typesafe.akka"             %% "akka-stream-kafka"      % "0.12"
 
   }
 

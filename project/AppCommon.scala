@@ -24,11 +24,17 @@ object AppCommon extends AutoPlugin {
       s"-Dapplication.name=${normalizedName.value}",
       s"-J-Xmx1024M"
     ),
-    setSystemProperty("config.file", """$(realpath "${app_home}/../conf")/application.conf""")
+    setSystemProperty("config.file", relativeToAppHome("../conf/application.conf"))
   )
 
-  // Could make helper methods for interacting with ${app_home} runtime path by using $(realpath "${app_home})
   def setSystemProperty(property: String, value: String) = addJavaArg(s"-D$property=$value")
 
   def addJavaArg(arg: String) = bashScriptExtraDefines += s"""addJava "$arg""""
+  def addAppArg(arg: String) = bashScriptExtraDefines += s"""addApp "$arg""""
+  def addDebugger(port: Int) = bashScriptExtraDefines += s"""addDebugger "$port""""
+
+  def appHome = "${app_home}"
+  def appMainClass = "${app_mainclass}"
+  def appClasspath = "${app_classpath}"
+  def relativeToAppHome(relativePath: String) = s"""$$(realpath "$appHome/$relativePath")"""
 }
