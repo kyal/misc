@@ -1,4 +1,5 @@
-package net.b83.misc
+package net.b83.misc.avro
+
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream}
 
 import com.sksamuel.avro4s._

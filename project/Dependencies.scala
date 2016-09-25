@@ -6,6 +6,8 @@ import Keys._
 
 object Dependencies {
 
+  val akkaVersion = "2.4.10"
+
   object Provided
 
   object Compile {
@@ -16,13 +18,15 @@ object Dependencies {
     val `log4j-over-slf4j`  = "org.slf4j"                     %   "log4j-over-slf4j"      % "1.7.21"
     val avro4s              = "com.sksamuel.avro4s"           %%  "avro4s-core"           % "1.6.1"
     val `avro-tools`        = "org.apache.avro"               %   "avro-tools"            % "1.8.1"
-    val `akka-stream-kafka` = "com.typesafe.akka"             %% "akka-stream-kafka"      % "0.12"
+    val `akka-stream-kafka` = "com.typesafe.akka"             %%  "akka-stream-kafka"     % "0.12"
 
   }
 
   object Test {
     val specs2              = "org.specs2"                    %%  "specs2-core"           % "3.8.5"
-    val `akka-slf4j`        = "com.typesafe.akka"             %%  "akka-slf4j"            % "2.4.10"
+    val `akka-testkit`      = "com.typesafe.akka"             %%  "akka-testkit"          % akkaVersion
+    val `akka-steam-testkit`= "com.typesafe.akka"             %%  "akka-stream-testkit"   % akkaVersion
+    val `akka-slf4j`        = "com.typesafe.akka"             %%  "akka-slf4j"            % akkaVersion
   }
 
 

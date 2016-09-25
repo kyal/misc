@@ -80,7 +80,9 @@ object Common extends AutoPlugin {
     libraryDependencies ++= Seq(
       net.b83.Dependencies.Compile.logback % Test,
       net.b83.Dependencies.Test.specs2 % Test
-    )
+    ),
+    testOptions in Test += Tests.Argument("sequential", "true"),
+    testOptions in Test += Tests.Argument("isolated", "true")
   )
 
 
