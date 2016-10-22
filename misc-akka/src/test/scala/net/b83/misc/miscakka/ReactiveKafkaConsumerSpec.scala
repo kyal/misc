@@ -5,11 +5,10 @@ import akka.kafka.ConsumerMessage.CommittableOffsetBatch
 import akka.kafka.scaladsl.Consumer
 import akka.kafka.{ConsumerSettings, KafkaConsumerActor, Subscriptions}
 import akka.stream.ActorMaterializer
-import akka.stream.scaladsl.Keep
 import akka.stream.testkit.scaladsl.TestSink
 import akka.testkit.{ImplicitSender, TestKit}
 import com.typesafe.scalalogging.StrictLogging
-import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
+import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.specs2.mutable.SpecificationLike

@@ -4,7 +4,7 @@ import java.nio.file.Path
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.StrictLogging
-import configs.{Config, Configs, Result, ToConfig}
+import configs._
 import configs.syntax._
 
 import scala.concurrent.duration.FiniteDuration
@@ -45,15 +45,13 @@ object ExampleApp extends StrictLogging {
     val cfg = {
       val c = ConfigFactory.load()
       c.checkValid(ConfigFactory.defaultReference(), ConfigRoot)
-      c.getConfig(ConfigRoot)
       val higherPriority = ConfigFactory.empty()
       c.getConfig(ConfigRoot) ++ higherPriority
     }
 
 
 
-    logger.info("result with origin=" + cfg.getWithOrigin[Boolean]("avro.use-unions"))
-
+    logger.info("result with origin=" + cfg.get[WithOrigin[Boolean]]("avro.use-unions"))
 
 
 
@@ -82,16 +80,6 @@ object ExampleApp extends StrictLogging {
     // Applicative
     val combinedBad = (cfg.get[SimpleConfig]("invalid") ~ cfg.get[SimpleConfig]("invalid"))(Tuple2.apply)
     logger.info("combinedBad] #errors=" + combinedBad.fold(_.entries.length, _ => 0))
-
-
-    // Can create a Config from case objects and then render it like a source file
-    val created = Config(
-      "xxx" := 99,
-      "yyy" := SimpleConfig("qqq")
-    )
-    logger.info("created=" + created.root().render())
-
-
   }
 
 }
